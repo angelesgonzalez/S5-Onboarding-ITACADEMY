@@ -24,11 +24,11 @@ function App() {
 				img={currentStepData.image}
 				nextStep={setNextStep}
 				prevStep={setPrevStep}
-			step = {step}
-			
-			>
+				step={step}
+				totalSteps={tutorialData.length}>
 				{currentStepData.description}
 			</Card>
+			
 		</>
 	);
 }

@@ -1,10 +1,11 @@
-import { tutorialData } from "../data/tutorialData";
+import { Button } from "./Button/Button";
 
 type Props = {
 	title: string;
 	img: string;
 	children: React.ReactNode;
 	step: number;
+	totalSteps: number;
 	nextStep: () => void;
 	prevStep: () => void;
 };
@@ -16,6 +17,7 @@ export const Card = ({
 	prevStep,
 	children,
 	step,
+	totalSteps,
 }: Props) => {
 	const handleNextStep = () => {
 		nextStep();
@@ -25,21 +27,22 @@ export const Card = ({
 		prevStep();
 	};
 
-	const buttons = (
-		<div>
-			{step > 0 && <button onClick={handlePrevStep}>Prev</button>}
-			{step < tutorialData.length - 1 && (
-				<button onClick={handleNextStep}>Next</button>
-			)}
-		</div>
-	);
-
 	return (
 		<article>
 			<img src={img} alt={title} />
 			<h2>{title}</h2>
 			<p>{children}</p>
-			{buttons}
+			<div>
+				{step > 0 && <Button handleClick={handlePrevStep} variant="left" />}
+				{step < totalSteps - 1 && (
+					<Button handleClick={handleNextStep} variant="right" />
+				)}
+			</div>
 		</article>
 	);
 };
+
+/*
+
+
+*/
